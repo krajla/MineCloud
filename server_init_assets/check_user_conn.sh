@@ -1,4 +1,5 @@
 #!/bin/bash
+
 #Checks for active connections on  port 22 (ssh) and 25565 (minecloud)
 #If no connections are found, shut down the server
 
@@ -20,7 +21,7 @@ then
         if [[ $((sshCons)) = 0 ]]
         then
                 echo "no ssh connections, closing server instace"
-                ./send_discord_message_to_webhook.sh "Hm... there's $mcCons player online now. Shutting down the server instance OwO~"
+                ./send_discord_message_to_webhook.sh "Hm... there's $mcCons player online now. Shutting down the server instance"
 		sudo systemctl stop minecloud
                 ./auto_backup_checker.sh
 		./send_discord_message_to_webhook.sh "(Server instance stopped)"
@@ -32,5 +33,5 @@ then
         fi
 else
         echo "Somebody is online, do nothing!"
-        ./send_discord_message_to_webhook.sh "Hm... there're $mcCons players online now... Come and join Ow<?"
+        ./send_discord_message_to_webhook.sh "Hm... there're $mcCons players online now... Come and join?"
 fi

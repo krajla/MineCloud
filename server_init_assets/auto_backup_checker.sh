@@ -24,11 +24,11 @@ if [ ! -f "$backUpTimeFilePath" ];
 
         if (($timeSinceLastBackup > $backUpInterval));
         then
-            ./send_discord_message_to_webhook.sh "It has been $(($timeSinceLastBackup/60)) minutes since last auto backup... \nCreating backup OwO... "
+            ./send_discord_message_to_webhook.sh "It has been $(($timeSinceLastBackup/60)) minutes since last auto backup... \nCreating backup... "
             ./server_backup.sh
             currentTime=$(date +%s)
             echo "$currentTime" > lastBackupTime.txt
         else
-            ./send_discord_message_to_webhook.sh "Only $(($timeSinceLastBackup/60)) minutes since last auto backup... No auto backup needed =w=..."
+            ./send_discord_message_to_webhook.sh "Only $(($timeSinceLastBackup/60)) minutes since last auto backup... No auto backup needed..."
         fi;
 fi
